@@ -82,7 +82,21 @@ public class Streams {
             .map(Persona::getNombre);
 
         laMujerMayor.ifPresent(nombre -> System.out.println(nombre));
+
+        //    MAP - SET
+        Set<Genero> generos = personas.stream()
+                .map(persona -> persona.getGenero())
+                .collect(Collectors.toSet());
+        generos.forEach(System.out::println);
+
+//        LENGTH NOMBRES
+        personas.stream()
+                .map(persona -> persona.getNombre())
+                .mapToInt(String::length)
+                .forEach(System.out::println);
     }
+
+
 
     private static List<Persona> getPersona(){
         return List.of(
